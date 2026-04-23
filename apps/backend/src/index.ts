@@ -20,8 +20,26 @@ app.get("/convert", async (req, res) => {
     )
     const data = await response.json()
     return res.json(data)
-  } catch (error) {
+  } catch {
     return res.status(500).json({ error: "Erro ao buscar cotação" })
+  }
+})
+
+app.get("/history", async (req, res) => {
+  const { from, to, start, end } = req.query
+
+  if (!from || !to || !start || !end) {
+    return res.status(400).json({ error: "Parâmetros insuficientes" })
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.frankfurter.app/${start}..${end}?from=${from}&to=${to}`
+    )
+    const data = await response.json()
+    return res.json(data)
+  } catch {
+    return res.status(500).json({ error: "Erro ao buscar histórico" })
   }
 })
 

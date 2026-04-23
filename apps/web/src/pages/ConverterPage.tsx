@@ -90,7 +90,7 @@ export default function App() {
               <SelectTrigger className="flex-1">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent side="bottom" position="popper" sideOffset={4} className="bg-white">
+              <SelectContent side="bottom" position="popper" sideOffset={4} className="bg-card text-white z-50">
                 {CURRENCIES.map((c) => (
                   <SelectItem key={c.code} value={c.code} className="hover:bg-zinc-100 cursor-pointer">
                     <span className="font-medium">{c.code}</span>
@@ -108,7 +108,7 @@ export default function App() {
               <SelectTrigger className="flex-1">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent side="bottom" position="popper" sideOffset={4} className="bg-white">
+              <SelectContent side="bottom" position="popper" sideOffset={4} className="bg-card text-white z-50">
                 {CURRENCIES.map((c) => (
                   <SelectItem key={c.code} value={c.code} className="hover:bg-zinc-100 cursor-pointer">
                     <span className="font-medium">{c.code}</span>
