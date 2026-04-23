@@ -2,8 +2,6 @@
 
 Conversor de moedas inteligente com cotações em tempo real, histórico de câmbio, alertas personalizados e simulador de compras passadas.
 
-> Projeto desenvolvido para portfólio pessoal, com foco em boas práticas de desenvolvimento, arquitetura limpa e experiência do usuário.
-
 ---
 
 ## 📸 Preview
@@ -14,14 +12,14 @@ Conversor de moedas inteligente com cotações em tempo real, histórico de câm
 
 ## ✅ Funcionalidades
 
-- [x] Conversão de moedas em tempo real
-- [x] Histórico de câmbio com gráfico interativo
-- [x] Seletor de período (7, 15, 30, 90, 365 dias ou personalizado)
-- [x] Cards de mínimo, máximo e variação percentual no período
-- [ ] Alertas personalizados de câmbio
-- [ ] Simulador de compras históricas
-- [ ] Autenticação de usuários
-- [ ] Histórico pessoal de conversões
+-  Conversão de moedas em tempo real
+-  Histórico de câmbio com gráfico interativo
+-  Seletor de período (7, 15, 30, 90, 365 dias ou personalizado)
+-  Cards de mínimo, máximo e variação percentual no período
+-  Alertas personalizados de câmbio
+-  Simulador de compras históricas
+-  Autenticação de usuários
+-  Histórico pessoal de conversões
 
 ---
 
@@ -39,6 +37,7 @@ Conversor de moedas inteligente com cotações em tempo real, histórico de câm
 
 ## 📁 Estrutura do projeto
 
+```
 Moneda/
 ├── apps/
 │   ├── web/          # Frontend React
@@ -46,6 +45,7 @@ Moneda/
 ├── packages/
 │   └── shared/       # Utilitários compartilhados
 └── README.md
+```
 
 ---
 
