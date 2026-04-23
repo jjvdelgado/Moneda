@@ -1,25 +1,14 @@
 # 🪙 Moneda
 
-Conversor de moedas inteligente com cotações em tempo real, histórico de câmbio, alertas personalizados e simulador de compras passadas.
+Moneda é um conversor de moedas que vai além da conversão simples. Desenvolvido com foco em experiência do usuário e arquitetura limpa, o app oferece cotações em tempo real, visualização do histórico de câmbio com gráficos interativos, alertas personalizados e um simulador que permite descobrir quanto valeria hoje uma conversão feita em qualquer data passada.
+
+O projeto foi construído como monorepo, separando frontend web, backend e pacotes compartilhados.
 
 ---
 
 ## 📸 Preview
 
 <!-- Adicione um print ou GIF do app aqui -->
-
----
-
-## ✅ Funcionalidades
-
--  Conversão de moedas em tempo real
--  Histórico de câmbio com gráfico interativo
--  Seletor de período (7, 15, 30, 90, 365 dias ou personalizado)
--  Cards de mínimo, máximo e variação percentual no período
--  Alertas personalizados de câmbio
--  Simulador de compras históricas
--  Autenticação de usuários
--  Histórico pessoal de conversões
 
 ---
 
