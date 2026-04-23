@@ -1,0 +1,8 @@
+{
+  "name": "moneda",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
