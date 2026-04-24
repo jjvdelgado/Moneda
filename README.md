@@ -83,15 +83,24 @@ O app estará disponível em `http://localhost:5173`
 
 ## 📦 Changelog
 
-### v0.2 — Histórico de câmbio
+### v1.3 — Simulador histórico
+- Simulação de compras passadas com resultado em tempo real
+- Comparação entre valor na época e valor atual
+- Ganho ou perda estimada com variação percentual
+
+### v1.2 — Histórico de câmbio
 - Gráfico de linha com variação do câmbio ao longo do tempo
-- Seletor de período pré-definido e personalizado com calendário
+- Seletor de período: 7, 15, 30, 90, 365 dias ou personalizado
 - Cards de mínimo, máximo e variação percentual
 
-### v0.1 — Estrutura base + Conversor
-- Setup do monorepo com npm workspaces
-- Conversor de moedas em tempo real
+### v1.1 — Navegação e páginas base
 - Sidebar de navegação com tema dark
 - Páginas de Suporte e Sobre
+- Rotas para Alertas e Simulador
+
+### v1.0 — Estrutura base e Conversor
+- Setup do monorepo com npm workspaces
+- Conversor de moedas em tempo real
+- Integração com Frankfurter API via backend
 
 ---
