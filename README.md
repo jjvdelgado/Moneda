@@ -1,4 +1,4 @@
-# 🪙 Moneda
+# Moneda
 
 Moneda é um conversor de moedas que vai além da conversão simples. Desenvolvido com foco em experiência do usuário e arquitetura limpa, o app oferece cotações em tempo real, visualização do histórico de câmbio com gráficos interativos, alertas personalizados e um simulador que permite descobrir quanto valeria hoje uma conversão feita em qualquer data passada.
 
@@ -6,13 +6,13 @@ O projeto foi construído como monorepo, separando frontend web, backend e pacot
 
 ---
 
-## 📸 Preview
+## Preview
 
 <!-- Adicione um print ou GIF do app aqui -->
 
 ---
 
-## 🛠️ Stack
+## Stack
 
 | Camada | Tecnologia |
 |---|---|
@@ -24,7 +24,7 @@ O projeto foi construído como monorepo, separando frontend web, backend e pacot
 
 ---
 
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ```
 Moneda/
@@ -38,7 +38,7 @@ Moneda/
 
 ---
 
-## 🚀 Como rodar localmente
+## Como rodar localmente
 
 ### Pré-requisitos
 
@@ -81,7 +81,14 @@ O app estará disponível em `http://localhost:5173`
 
 ---
 
-## 📦 Changelog
+## Changelog
+
+### v1.4 — Autenticação
+- Login e cadastro com email e senha
+- JWT armazenado no localStorage
+- Rotas protegidas com redirecionamento automático
+- Integração com PostgreSQL via Prisma
+- Logout com modal de confirmação
 
 ### v1.3 — Simulador histórico
 - Simulação de compras passadas com resultado em tempo real
