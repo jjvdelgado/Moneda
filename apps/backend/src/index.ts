@@ -1,5 +1,11 @@
+import path from "path"
+import dotenv from "dotenv"
+dotenv.config({ path: path.resolve(__dirname, "../.env") })
+console.log("DATABASE_URL:", process.env.DATABASE_URL)
+
 import express from "express"
 import cors from "cors"
+import authRouter from "./auth"
 
 const app = express()
 const PORT = 3333
@@ -42,6 +48,8 @@ app.get("/history", async (req, res) => {
     return res.status(500).json({ error: "Erro ao buscar histórico" })
   }
 })
+
+app.use("/auth", authRouter)
 
 app.listen(PORT, () => {
   console.log(`Backend rodando em http://localhost:${PORT}`)

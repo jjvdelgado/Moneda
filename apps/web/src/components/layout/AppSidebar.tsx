@@ -1,6 +1,7 @@
 import { Coins, History, Bell, TrendingUp, LogOut, HeadphonesIcon, Info } from "lucide-react"
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { useAuth } from "@/contexts/AuthContext"
 import {
   Sidebar,
   SidebarContent,
@@ -39,6 +40,7 @@ export default function AppSidebar() {
   const location = useLocation()
   const navigate = useNavigate()
   const [showLogout, setShowLogout] = useState(false)
+  const { logout } = useAuth()
 
   return (
     <Sidebar>
@@ -157,7 +159,10 @@ export default function AppSidebar() {
                 Cancelar
               </Button>
               <Button
-                onClick={() => setShowLogout(false)}
+                onClick={() => {
+                  logout()
+                  setShowLogout(false)
+                }}
                 style={{ backgroundColor: "#ef4444", color: "white" }}
                 className="hover:opacity-90"
               >
