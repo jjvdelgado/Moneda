@@ -83,6 +83,11 @@ O app estará disponível em `http://localhost:5173`
 
 ## Changelog
 
+### v1.5 — Perfil do usuário
+- Página de perfil com edição de nome e senha
+- Atualização em tempo real do nome na sidebar
+- Sessão persistida corretamente após recarregar a página
+
 ### v1.4 — Autenticação
 - Login e cadastro com email e senha
 - JWT armazenado no localStorage

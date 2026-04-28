@@ -1,4 +1,4 @@
-import { Coins, History, Bell, TrendingUp, LogOut, HeadphonesIcon, Info } from "lucide-react"
+import { Coins, History, Bell, TrendingUp, LogOut, HeadphonesIcon, Info, User as UserIcon} from "lucide-react"
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useAuth } from "@/contexts/AuthContext"
@@ -28,6 +28,7 @@ const navItems = [
 ]
 
 const footerItems = [
+  { label: "Perfil", icon: UserIcon },
   { label: "Suporte", icon: HeadphonesIcon },
   { label: "Sobre", icon: Info },
   { label: "Sair", icon: LogOut },
@@ -40,7 +41,7 @@ export default function AppSidebar() {
   const location = useLocation()
   const navigate = useNavigate()
   const [showLogout, setShowLogout] = useState(false)
-  const { logout } = useAuth()
+  const { logout, user } = useAuth()
 
   return (
     <Sidebar>
@@ -96,6 +97,21 @@ export default function AppSidebar() {
         </SidebarMenu>
       </SidebarContent>
 
+      {user && (
+      <div className="px-4 py-3 border-t border-border flex items-center gap-3">
+          <div
+            className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
+            style={{ backgroundColor: "#4ade80", color: "#0d1a0f" }}
+          >
+            {user.name.charAt(0).toUpperCase()}
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium truncate">{user.name}</p>
+            <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+          </div>
+        </div>
+      )}
+
       <SidebarFooter className="p-3 border-t border-border">
         <SidebarMenu className="gap-1">
           {footerItems.map((item) => {
@@ -109,6 +125,7 @@ export default function AppSidebar() {
                     if (item.label === "Sair") setShowLogout(true)
                     if (item.label === "Suporte") navigate("/suporte")
                     if (item.label === "Sobre") navigate("/sobre")
+                    if (item.label === "Perfil") navigate("/perfil")
                   }}
                   className="flex items-center gap-3 px-4 h-11 w-full rounded-lg transition-colors text-sm"
                   style={{

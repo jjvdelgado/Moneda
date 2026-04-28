@@ -64,4 +64,42 @@ router.post("/login", async (req: Request, res: Response) => {
   }
 })
 
+// Atualizar perfil
+router.put("/profile", async (req: Request, res: Response) => {
+  const { userId, name, currentPassword, newPassword } = req.body
+
+  if (!userId) {
+    return res.status(400).json({ error: "Usuário não identificado." })
+  }
+
+  try {
+    const user = await prisma.user.findUnique({ where: { id: userId } })
+    if (!user) {
+      return res.status(404).json({ error: "Usuário não encontrado." })
+    }
+
+    const updateData: any = {}
+
+    if (name) updateData.name = name
+
+    if (currentPassword && newPassword) {
+      const valid = await bcrypt.compare(currentPassword, user.password)
+      if (!valid) {
+        return res.status(401).json({ error: "Senha atual incorreta." })
+      }
+      updateData.password = await bcrypt.hash(newPassword, 10)
+    }
+
+    const updated = await prisma.user.update({
+      where: { id: userId },
+      data: updateData,
+    })
+
+    return res.json({ user: { id: updated.id, name: updated.name, email: updated.email } })
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ error: "Erro ao atualizar perfil." })
+  }
+})
+
 export default router

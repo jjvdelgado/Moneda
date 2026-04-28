@@ -9,9 +9,14 @@ import SobrePage from "./pages/SobrePage"
 import SuportePage from "./pages/SuportePage"
 import LoginPage from "./pages/LoginPage"
 import CadastroPage from "./pages/CadastroPage"
+import PerfilPage from "./pages/PerfilPage"
+
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, loading } = useAuth()
+  
+  if (loading) return null
+  
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" />
 }
 
@@ -35,6 +40,7 @@ export default function App() {
           <Route path="simulador" element={<SimuladorPage />} />
           <Route path="sobre" element={<SobrePage />} />
           <Route path="suporte" element={<SuportePage />} />
+          <Route path="perfil" element={<PerfilPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
