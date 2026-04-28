@@ -83,6 +83,11 @@ O app estará disponível em `http://localhost:5173`
 
 ## Changelog
 
+### v1.6 — Polimento visual
+- Layout do conversor melhorado com indicador de variação do dia
+- Páginas de login e cadastro redesenhadas com fundo gradiente
+- Transições suaves entre páginas com framer-motion
+
 ### v1.5 — Perfil do usuário
 - Página de perfil com edição de nome e senha
 - Atualização em tempo real do nome na sidebar
