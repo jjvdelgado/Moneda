@@ -36,6 +36,7 @@ O projeto foi construído como monorepo, separando frontend web, backend e pacot
 
 ## Estrutura do projeto
 
+```
 Moneda/
 ├── apps/
 │   ├── web/          # Frontend React
@@ -43,6 +44,7 @@ Moneda/
 ├── packages/
 │   └── shared/       # Utilitários compartilhados
 └── README.md
+```
 
 ---
 
