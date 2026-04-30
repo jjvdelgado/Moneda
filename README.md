@@ -1,14 +1,20 @@
 # Moneda
 
-Moneda é um conversor de moedas que vai além da conversão simples. Desenvolvido com foco em experiência do usuário e arquitetura limpa, o app oferece cotações em tempo real, visualização do histórico de câmbio com gráficos interativos, alertas personalizados e um simulador que permite descobrir quanto valeria hoje uma conversão feita em qualquer data passada.
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=white)
 
-O projeto foi construído como monorepo, separando frontend web, backend e pacotes compartilhados.
+Moneda é um conversor de moedas que vai além da conversão simples. Desenvolvido com foco em experiência do usuário e arquitetura limpa, o app oferece cotações em tempo real, visualização do histórico de câmbio com gráficos interativos e um simulador que permite descobrir quanto valeria hoje uma conversão feita em qualquer data passada.
+
+O projeto foi construído como monorepo, separando frontend web, backend e pacotes compartilhados, refletindo uma arquitetura próxima do que se encontra em projetos profissionais reais.
 
 ---
 
 ## Preview
 
-<!-- Adicione um print ou GIF do app aqui -->
+![Moneda App](assets/preview.png)
 
 ---
 
@@ -18,7 +24,11 @@ O projeto foi construído como monorepo, separando frontend web, backend e pacot
 |---|---|
 | Web | React + Vite + TypeScript |
 | Estilização | Tailwind CSS + shadcn/ui |
+| Animações | Framer Motion |
 | Backend | Node.js + Express + TypeScript |
+| Banco de dados | PostgreSQL |
+| ORM | Prisma |
+| Autenticação | JWT + bcryptjs |
 | API de câmbio | Frankfurter API |
 | Monorepo | npm Workspaces |
 
@@ -26,7 +36,6 @@ O projeto foi construído como monorepo, separando frontend web, backend e pacot
 
 ## Estrutura do projeto
 
-```
 Moneda/
 ├── apps/
 │   ├── web/          # Frontend React
@@ -34,7 +43,6 @@ Moneda/
 ├── packages/
 │   └── shared/       # Utilitários compartilhados
 └── README.md
-```
 
 ---
 
@@ -45,6 +53,7 @@ Moneda/
 - Node.js 18+
 - npm 9+
 - Git
+- PostgreSQL
 
 ### 1. Clone o repositório
 
@@ -59,16 +68,31 @@ cd moneda
 npm install
 ```
 
-### 3. Rode o backend
+### 3. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` em `apps/backend/`:
+
+```env
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/moneda"
+JWT_SECRET="sua-chave-secreta"
+```
+
+### 4. Execute as migrations do banco
 
 ```bash
 cd apps/backend
+npx prisma migrate dev
+```
+
+### 5. Rode o backend
+
+```bash
 npx ts-node src/index.ts
 ```
 
 O backend estará disponível em `http://localhost:3333`
 
-### 4. Rode o frontend
+### 6. Rode o frontend
 
 Em outro terminal:
 
@@ -79,45 +103,13 @@ npm run dev
 
 O app estará disponível em `http://localhost:5173`
 
----
-
 ## Changelog
 
-### v1.6 — Polimento visual
-- Layout do conversor melhorado com indicador de variação do dia
-- Páginas de login e cadastro redesenhadas com fundo gradiente
-- Transições suaves entre páginas com framer-motion
+### v1.0 — Lançamento inicial
 
-### v1.5 — Perfil do usuário
-- Página de perfil com edição de nome e senha
-- Atualização em tempo real do nome na sidebar
-- Sessão persistida corretamente após recarregar a página
-
-### v1.4 — Autenticação
-- Login e cadastro com email e senha
-- JWT armazenado no localStorage
-- Rotas protegidas com redirecionamento automático
-- Integração com PostgreSQL via Prisma
-- Logout com modal de confirmação
-
-### v1.3 — Simulador histórico
-- Simulação de compras passadas com resultado em tempo real
-- Comparação entre valor na época e valor atual
-- Ganho ou perda estimada com variação percentual
-
-### v1.2 — Histórico de câmbio
-- Gráfico de linha com variação do câmbio ao longo do tempo
-- Seletor de período: 7, 15, 30, 90, 365 dias ou personalizado
-- Cards de mínimo, máximo e variação percentual
-
-### v1.1 — Navegação e páginas base
-- Sidebar de navegação com tema dark
-- Páginas de Suporte e Sobre
-- Rotas para Alertas e Simulador
-
-### v1.0 — Estrutura base e Conversor
-- Setup do monorepo com npm workspaces
-- Conversor de moedas em tempo real
-- Integração com Frankfurter API via backend
-
----
+- Conversor de moedas em tempo real com indicador de variação do dia
+- Histórico de câmbio com gráfico interativo e seletor de período personalizado
+- Simulador de compras históricas com ganho ou perda estimada
+- Autenticação completa com login, cadastro e perfil editável
+- Sidebar de navegação com tema dark e transições suaves entre páginas
+- Arquitetura monorepo com frontend React, backend Node.js e banco PostgreSQL
