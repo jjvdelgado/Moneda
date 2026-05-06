@@ -8,8 +8,7 @@
 
 Moneda é um conversor de moedas que vai além da conversão simples. Desenvolvido com foco em experiência do usuário e arquitetura limpa, o app oferece cotações em tempo real, visualização do histórico de câmbio com gráficos interativos e um simulador que permite descobrir quanto valeria hoje uma conversão feita em qualquer data passada.
 
-O projeto foi construído como monorepo, separando frontend web, backend e pacotes compartilhados, refletindo uma arquitetura próxima do que se encontra em projetos profissionais reais.
-
+O projeto foi construído como monorepo, separando frontend web, backend e pacotes compartilhados.
 ---
 
 ## Preview
