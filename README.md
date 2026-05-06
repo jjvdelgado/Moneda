@@ -107,6 +107,14 @@ O app estará disponível em `http://localhost:5173`
 
 ## Changelog
 
+### v1.1 — Histórico de conversões
+- Salvar conversões manualmente com feedback visual
+- Página de histórico com listagem das conversões salvas
+- Seleção e exclusão de múltiplas conversões
+- Exclusão de todo o histórico com confirmação
+- Ordenação por mais recentes ou mais antigas
+- Limite de 300 conversões por usuário
+
 ### v1.0 — Lançamento inicial
 
 - Conversor de moedas em tempo real com indicador de variação do dia

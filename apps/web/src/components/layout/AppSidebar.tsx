@@ -1,4 +1,4 @@
-import { Coins, History, Bell, TrendingUp, LogOut, HeadphonesIcon, Info, User as UserIcon} from "lucide-react"
+import { Coins, History, Bell, TrendingUp, Clock, LogOut, HeadphonesIcon, Info, User as UserIcon} from "lucide-react"
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useAuth } from "@/contexts/AuthContext"
@@ -25,6 +25,7 @@ const navItems = [
   { to: "/historico", label: "Histórico", icon: History },
   { to: "/alertas", label: "Alertas", icon: Bell },
   { to: "/simulador", label: "Simulador", icon: TrendingUp },
+  { to: "/historico-conversoes", label: "Conversões", icon: Clock },
 ]
 
 const footerItems = [
@@ -62,7 +63,7 @@ export default function AppSidebar() {
           {navItems.map((item) => {
             const isActive = item.to === "/" 
               ? location.pathname === "/" 
-              : location.pathname.startsWith(item.to)
+              : location.pathname === item.to
 
             return (
               <SidebarMenuItem key={item.to}>

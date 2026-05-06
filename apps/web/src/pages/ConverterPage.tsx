@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useAuth } from "@/contexts/AuthContext"
+import { toast } from "sonner"
 import {
   Select,
   SelectContent,
@@ -9,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { ArrowRightLeft, RefreshCw, TrendingUp, TrendingDown, Minus } from "lucide-react"
+import { ArrowRightLeft, RefreshCw, TrendingUp, TrendingDown, Minus, BookmarkPlus } from "lucide-react"
 
 const CURRENCY_CODES = ["USD", "BRL", "EUR", "GBP", "JPY", "ARS", "CAD", "CHF", "AUD"]
 const currencyNames = new Intl.DisplayNames(["pt-BR"], { type: "currency" })
@@ -30,6 +32,10 @@ export default function ConverterPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [lastUpdated, setLastUpdated] = useState<string | null>(null)
+  const { user } = useAuth()
+  const [showSaveLimit, setShowSaveLimit] = useState(false)
+  const [saving, setSaving] = useState(false)
+
 
   async function convert() {
     if (!amount || isNaN(Number(amount))) return
@@ -66,6 +72,46 @@ export default function ConverterPage() {
       setError("Erro ao buscar cotação. Tente novamente.")
     } finally {
       setLoading(false)
+    }
+  }
+
+  async function saveConversion() {
+    if (!user || result === null || rate === null) return
+
+    setSaving(true)
+
+    try {
+      const response = await fetch("http://localhost:3333/conversions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: user.id,
+          fromCurrency: from,
+          toCurrency: to,
+          amount: Number(amount),
+          result,
+          rate,
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.limitReached) {
+        setShowSaveLimit(true)
+      } else {
+        toast.success("Conversão salva!", {
+          description: `${from} → ${to} salvo no seu histórico.`,
+          style: {
+            backgroundColor: "#0d2a0d",
+            border: "1px solid #4ade80",
+            color: "#4ade80",
+          },
+        })
+      }
+    } catch {
+      toast.error("Erro ao salvar conversão.")
+    } finally {
+      setTimeout(() => setSaving(false), 1500)
     }
   }
 
@@ -207,6 +253,36 @@ export default function ConverterPage() {
                 <span>1 {from} = {rate.toFixed(4)} {to}</span>
                 {lastUpdated && <span>Atualizado às {lastUpdated}</span>}
               </div>
+
+              {/* Aviso de limite */}
+              {showSaveLimit ? (
+                <div className="flex items-center justify-between bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-md px-3 py-2 text-sm">
+                  <span>⚠️ Limite de 300 conversões atingido. Exclua algumas para salvar novas.</span>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-yellow-400 hover:text-yellow-300 hover:bg-yellow-500/10 ml-2 flex-shrink-0"
+                    onClick={() => window.location.href = "/historico-conversoes"}
+                  >
+                    Gerenciar
+                  </Button>
+                </div>
+              ) : (
+              <Button
+                variant="outline"
+                className="w-full gap-2 transition-all duration-300"
+                onClick={saveConversion}
+                disabled={loading || saving}
+                style={saving ? {
+                  borderColor: "#4ade80",
+                  color: "#4ade80",
+                  backgroundColor: "rgba(74,222,128,0.08)",
+                } : {}}
+              >
+                <BookmarkPlus className="w-4 h-4" />
+                {saving ? "Salvando..." : "Salvar conversão"}
+              </Button>
+              )}
             </div>
           )}
 

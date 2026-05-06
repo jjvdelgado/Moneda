@@ -3,6 +3,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import AppSidebar from "./AppSidebar"
 import { AnimatePresence } from "framer-motion"
 import PageTransition from "./PageTransition"
+import { Toaster } from "@/components/ui/sonner"
+
 
 export default function AppLayout() {
   const location = useLocation()
@@ -21,7 +23,7 @@ export default function AppLayout() {
             </PageTransition>
           </div>
         </main>
-      </div>
-    </SidebarProvider>
-  )
-}
+      <Toaster position="bottom-right" theme="dark" />
+    </div>
+  </SidebarProvider>
+)}

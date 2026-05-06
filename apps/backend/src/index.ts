@@ -6,6 +6,7 @@ console.log("DATABASE_URL:", process.env.DATABASE_URL)
 import express from "express"
 import cors from "cors"
 import authRouter from "./auth"
+import conversionsRouter from "./conversions"
 
 const app = express()
 const PORT = 3333
@@ -50,6 +51,7 @@ app.get("/history", async (req, res) => {
 })
 
 app.use("/auth", authRouter)
+app.use("/conversions", conversionsRouter)
 
 app.listen(PORT, () => {
   console.log(`Backend rodando em http://localhost:${PORT}`)

@@ -10,6 +10,7 @@ import SuportePage from "./pages/SuportePage"
 import LoginPage from "./pages/LoginPage"
 import CadastroPage from "./pages/CadastroPage"
 import PerfilPage from "./pages/PerfilPage"
+import HistoricoConversoesPage from "./pages/HistoricoConversoes"
 
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="sobre" element={<SobrePage />} />
           <Route path="suporte" element={<SuportePage />} />
           <Route path="perfil" element={<PerfilPage />} />
+          <Route path="historico-conversoes" element={<HistoricoConversoesPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
