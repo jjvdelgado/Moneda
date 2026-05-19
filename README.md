@@ -106,6 +106,12 @@ O app estará disponível em `http://localhost:5173`
 
 ## Changelog
 
+### v1.2 — Alertas de câmbio
+- Criação de alertas com formato de frase natural
+- Escolha do email de notificação
+- Histórico de alertas ativos e disparados com horários
+- Disparo automático de email via job periódico
+
 ### v1.1 — Histórico de conversões
 - Salvar conversões manualmente com feedback visual
 - Página de histórico com listagem das conversões salvas

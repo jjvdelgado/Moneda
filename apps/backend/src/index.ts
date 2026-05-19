@@ -8,6 +8,9 @@ import cors from "cors"
 import authRouter from "./auth"
 import conversionsRouter from "./conversions"
 
+import alertsRouter from "./alerts"
+import { startAlertJob } from "./alertJob"
+
 const app = express()
 const PORT = 3333
 
@@ -52,6 +55,9 @@ app.get("/history", async (req, res) => {
 
 app.use("/auth", authRouter)
 app.use("/conversions", conversionsRouter)
+
+app.use("/alerts", alertsRouter)
+startAlertJob()
 
 app.listen(PORT, () => {
   console.log(`Backend rodando em http://localhost:${PORT}`)
