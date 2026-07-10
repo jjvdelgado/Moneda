@@ -9,6 +9,17 @@
 Moneda é um conversor de moedas que vai além da conversão simples. Desenvolvido com foco em experiência do usuário e arquitetura limpa, o app oferece cotações em tempo real, visualização do histórico de câmbio com gráficos interativos e um simulador que permite descobrir quanto valeria hoje uma conversão feita em qualquer data passada.
 
 O projeto foi construído como monorepo, separando frontend web, backend e pacotes compartilhados.
+
+---
+
+## Demo
+
+Acesse: **https://moneda-web.vercel.app**
+
+Conta de demonstração:
+- Email: `demo@moneda.app`
+- Senha: `demo123456`
+
 ---
 
 ## Preview
@@ -28,7 +39,9 @@ O projeto foi construído como monorepo, separando frontend web, backend e pacot
 | Banco de dados | PostgreSQL |
 | ORM | Prisma |
 | Autenticação | JWT + bcryptjs |
+| Notificações | Resend |
 | API de câmbio | Frankfurter API |
+| Deploy | Vercel + Railway |
 | Monorepo | npm Workspaces |
 
 ---
@@ -59,8 +72,8 @@ Moneda/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/moneda.git
-cd moneda
+git clone https://github.com/jjvdelgado/Moneda.git
+cd Moneda
 ```
 
 ### 2. Instale as dependências
@@ -76,6 +89,7 @@ Crie um arquivo `.env` em `apps/backend/`:
 ```env
 DATABASE_URL="postgresql://usuario:senha@localhost:5432/moneda"
 JWT_SECRET="sua-chave-secreta"
+RESEND_API_KEY="sua-chave-resend"
 ```
 
 ### 4. Execute as migrations do banco
@@ -104,6 +118,17 @@ npm run dev
 
 O app estará disponível em `http://localhost:5173`
 
+---
+
+## Autor
+
+Desenvolvido por **[Seu Nome]**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/seu-perfil)
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/jjvdelgado)
+
+---
+
 ## Changelog
 
 ### v1.2 — Alertas de câmbio
@@ -121,7 +146,6 @@ O app estará disponível em `http://localhost:5173`
 - Limite de 300 conversões por usuário
 
 ### v1.0 — Lançamento inicial
-
 - Conversor de moedas em tempo real com indicador de variação do dia
 - Histórico de câmbio com gráfico interativo e seletor de período personalizado
 - Simulador de compras históricas com ganho ou perda estimada
