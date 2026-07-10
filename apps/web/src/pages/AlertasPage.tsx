@@ -78,7 +78,7 @@ export default function AlertasPage() {
     setFormError(null)
 
     try {
-      const response = await fetch("${API_URL}/alerts", {
+      const response = await fetch(`${API_URL}/alerts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -36,7 +36,7 @@ export default function PerfilPage() {
     setNameSuccess(false)
 
     try {
-      const response = await fetch("${API_URL}/auth/profile", {
+      const response = await fetch(`${API_URL}/auth/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +81,7 @@ export default function PerfilPage() {
     setPassSuccess(false)
 
     try {
-      const response = await fetch("${API_URL}/auth/profile", {
+      const response = await fetch(`${API_URL}/auth/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

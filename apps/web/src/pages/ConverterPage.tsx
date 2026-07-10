@@ -82,7 +82,7 @@ export default function ConverterPage() {
     setSaving(true)
 
     try {
-      const response = await fetch("${API_URL}/conversions", {
+      const response = await fetch(`${API_URL}/conversions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
