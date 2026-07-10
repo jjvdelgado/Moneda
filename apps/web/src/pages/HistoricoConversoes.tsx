@@ -12,6 +12,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { toast } from "sonner"
+import { API_URL } from "@/lib/api"
 
 interface Conversion {
   id: string
@@ -38,7 +39,7 @@ export default function HistoricoConversoesPage() {
   async function fetchConversions() {
     if (!user) return
     try {
-      const response = await fetch(`http://localhost:3333/conversions/${user.id}`)
+      const response = await fetch(`${API_URL}/conversions/${user.id}`)
       const data = await response.json()
       setConversions(data)
     } catch {
@@ -52,7 +53,7 @@ export default function HistoricoConversoesPage() {
     try {
       await Promise.all(
         selected.map((id) =>
-          fetch(`http://localhost:3333/conversions/${id}`, { method: "DELETE" })
+          fetch(`${API_URL}/conversions/${id}`, { method: "DELETE" })
         )
       )
       setConversions((prev) => prev.filter((c) => !selected.includes(c.id)))
@@ -72,7 +73,7 @@ export default function HistoricoConversoesPage() {
   async function deleteAll() {
     if (!user) return
     try {
-      await fetch(`http://localhost:3333/conversions/all/${user.id}`, {
+      await fetch(`${API_URL}/conversions/all/${user.id}`, {
         method: "DELETE",
       })
       setConversions([])
@@ -243,7 +244,7 @@ export default function HistoricoConversoesPage() {
                         className="text-muted-foreground hover:text-red-400 hover:bg-red-400/10"
                         onClick={(e) => {
                         e.stopPropagation()
-                        fetch(`http://localhost:3333/conversions/${c.id}`, { method: "DELETE" })
+                        fetch(`${API_URL}/conversions/${c.id}`, { method: "DELETE" })
                         setConversions((prev) => prev.filter((conv) => conv.id !== c.id))
                         setSelected((prev) => prev.filter((id) => id !== c.id))
                         toast.success("Conversão excluída.", {

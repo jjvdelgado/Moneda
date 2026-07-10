@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { User, Lock } from "lucide-react"
+import { API_URL } from "@/lib/api"
 
 const GREEN = "#4ade80"
 
@@ -35,7 +36,7 @@ export default function PerfilPage() {
     setNameSuccess(false)
 
     try {
-      const response = await fetch("http://localhost:3333/auth/profile", {
+      const response = await fetch("${API_URL}/auth/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +81,7 @@ export default function PerfilPage() {
     setPassSuccess(false)
 
     try {
-      const response = await fetch("http://localhost:3333/auth/profile", {
+      const response = await fetch("${API_URL}/auth/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

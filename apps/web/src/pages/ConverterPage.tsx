@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { ArrowRightLeft, RefreshCw, TrendingUp, TrendingDown, Minus, BookmarkPlus } from "lucide-react"
+import { API_URL } from "@/lib/api"
 
 const CURRENCY_CODES = ["USD", "BRL", "EUR", "GBP", "JPY", "ARS", "CAD", "CHF", "AUD"]
 const currencyNames = new Intl.DisplayNames(["pt-BR"], { type: "currency" })
@@ -52,8 +53,8 @@ export default function ConverterPage() {
 
     try {
       const [currentRes, historyRes] = await Promise.all([
-        fetch(`http://localhost:3333/convert?from=${from}&to=${to}`),
-        fetch(`http://localhost:3333/history?from=${from}&to=${to}&start=${getYesterday()}&end=${getYesterday()}`)
+        fetch(`${API_URL}/convert?from=${from}&to=${to}`),
+        fetch(`${API_URL}/history?from=${from}&to=${to}&start=${getYesterday()}&end=${getYesterday()}`)
       ])
 
       const currentData = await currentRes.json()
@@ -81,7 +82,7 @@ export default function ConverterPage() {
     setSaving(true)
 
     try {
-      const response = await fetch("http://localhost:3333/conversions", {
+      const response = await fetch("${API_URL}/conversions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select"
 import { Trash2, Bell, BellOff } from "lucide-react"
 import { toast } from "sonner"
+import { API_URL } from "@/lib/api"
 
 const CURRENCY_CODES = ["USD", "BRL", "EUR", "GBP", "JPY", "ARS", "CAD", "CHF", "AUD"]
 const currencyNames = new Intl.DisplayNames(["pt-BR"], { type: "currency" })
@@ -53,7 +54,7 @@ export default function AlertasPage() {
   async function fetchAlerts() {
     if (!user) return
     try {
-      const response = await fetch(`http://localhost:3333/alerts/${user.id}`)
+      const response = await fetch(`${API_URL}/alerts/${user.id}`)
       const data = await response.json()
       setAlerts(data)
     } catch {
@@ -77,7 +78,7 @@ export default function AlertasPage() {
     setFormError(null)
 
     try {
-      const response = await fetch("http://localhost:3333/alerts", {
+      const response = await fetch("${API_URL}/alerts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -116,7 +117,7 @@ export default function AlertasPage() {
 
   async function deleteAlert(id: string) {
     try {
-      await fetch(`http://localhost:3333/alerts/${id}`, { method: "DELETE" })
+      await fetch(`${API_URL}/alerts/${id}`, { method: "DELETE" })
       setAlerts((prev) => prev.filter((a) => a.id !== id))
       toast.success("Alerta removido.", {
         style: {

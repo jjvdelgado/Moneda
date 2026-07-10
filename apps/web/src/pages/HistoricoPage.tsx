@@ -26,6 +26,7 @@ import {
 } from "recharts"
 import { CalendarIcon } from "lucide-react"
 import { DateRange } from "react-day-picker"
+import { API_URL } from "@/lib/api"
 
 const CURRENCY_CODES = ["USD", "BRL", "EUR", "GBP", "JPY", "ARS", "CAD", "CHF", "AUD"]
 const currencyNames = new Intl.DisplayNames(["pt-BR"], { type: "currency" })
@@ -91,7 +92,7 @@ export default function HistoricoPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:3333/history?from=${from}&to=${to}&start=${startDate}&end=${endDate}`
+        `${API_URL}/history?from=${from}&to=${to}&start=${startDate}&end=${endDate}`
       )
       const json = await response.json()
       const formatted = Object.entries(json.rates).map(([date, rates]: [string, any]) => ({

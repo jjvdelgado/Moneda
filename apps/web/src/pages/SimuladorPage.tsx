@@ -18,6 +18,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { CalendarIcon, TrendingUp, TrendingDown } from "lucide-react"
+import { API_URL } from "@/lib/api"
 
 const CURRENCY_CODES = ["USD", "BRL", "EUR", "GBP", "JPY", "ARS", "CAD", "CHF", "AUD"]
 const currencyNames = new Intl.DisplayNames(["pt-BR"], { type: "currency" })
@@ -80,8 +81,8 @@ export default function SimuladorPage() {
       const pastDateStr = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`
 
       const [pastRes, currentRes] = await Promise.all([
-        fetch(`http://localhost:3333/history?from=${boughtCurrency}&to=${convertTo}&start=${pastDateStr}&end=${pastDateStr}`),
-        fetch(`http://localhost:3333/convert?from=${boughtCurrency}&to=${convertTo}`)
+        fetch(`${API_URL}/history?from=${boughtCurrency}&to=${convertTo}&start=${pastDateStr}&end=${pastDateStr}`),
+        fetch(`${API_URL}/convert?from=${boughtCurrency}&to=${convertTo}`)
       ])
 
       const pastJson = await pastRes.json()
