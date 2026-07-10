@@ -14,7 +14,13 @@ import { startAlertJob } from "./alertJob"
 const app = express()
 const PORT = 3333
 
-app.use(cors({ origin: "http://localhost:5173" }))
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://moneda-web.vercel.app",
+    "https://moneda-web-git-main-developmentmoneda.vercel.app"
+  ]
+}))
 app.use(express.json())
 
 app.get("/convert", async (req, res) => {
@@ -58,14 +64,6 @@ app.use("/conversions", conversionsRouter)
 
 app.use("/alerts", alertsRouter)
 startAlertJob()
-
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://moneda-web.vercel.app",
-    "https://moneda-web-git-main-developmentmoneda.vercel.app"
-  ]
-}))
 
 app.listen(PORT, () => {
   console.log(`Backend rodando em http://localhost:${PORT}`)
